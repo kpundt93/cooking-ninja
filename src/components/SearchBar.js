@@ -5,13 +5,13 @@ import { useHistory } from 'react-router-dom'
 import './SearchBar.css'
 
 export default function SearchBar() {
-  const [term, setTerm] = useState();
+  const [term, setTerm] = useState('');
   const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    history.push(`/search?query=${term}`);
+    history.push(`/search?q=${term}`);
   }
 
   return (
