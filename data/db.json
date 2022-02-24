@@ -48,25 +48,6 @@
       "method": "blah",
       "cookingTime": "45 minutes",
       "id": "-m6wLF0"
-    },
-    {
-      "title": "asdfasasd",
-      "ingredients": [
-        "fasdf",
-        "fasdfads"
-      ],
-      "method": "asdf",
-      "cookingTime": "3 minutes",
-      "id": "k56WkWR"
-    },
-    {
-      "title": "sadfdsgf",
-      "ingredients": [
-        "sdfgsdfg"
-      ],
-      "method": "asdfaf",
-      "cookingTime": "5 minutes",
-      "id": "cPKT0e1"
     }
   ]
 }
