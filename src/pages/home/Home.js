@@ -14,24 +14,26 @@ export default function Home() {
   useEffect(() => {
     setIsPending(true);
 
-    projectFirestore.collection('recipes').get()
-      .then(snapshot => {
-        if (snapshot.empty) {
-          setError('No recipes to load');
-          setIsPending(false);
-        } else {
-          let results = [];
-          snapshot.docs.forEach(doc => {
-            results.push({ id: doc.id, ...doc.data() });
-          });
-          setData(results);
-          setIsPending(false);
-        }
-      }).catch(error => {
-        setError(error.message);
+    const unsub = projectFirestore.collection('recipes').onSnapshot(snapshot => {
+      if (snapshot.empty) {
+        setError('No recipes to load');
         setIsPending(false);
-      });
-  }, []);
+      } else {
+        let results = [];
+        snapshot.docs.forEach(doc => {
+          results.push({ id: doc.id, ...doc.data() });
+        });
+        setData(results);
+        setIsPending(false);
+      }
+    }, (err) => {
+      setError(err.message);
+      setIsPending(false);
+    });
+
+    return () => unsub();
+
+}, []);
 
   return (
     <div className="home">
